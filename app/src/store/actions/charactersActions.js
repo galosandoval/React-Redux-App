@@ -1,12 +1,17 @@
 import axios from 'axios'
 
-const DISPLAY_CARDS = 'DISPLAY_CARDS'
+export const LOADING_CARDS = 'LOADING_CARDS'
+export const DISPLAY_CARDS = 'DISPLAY_CARDS'
 
 const fetchCharacters = (dispatch) => {
-  dispatch({ DISPLAY_CARDS })
+  dispatch({ type: LOADING_CARDS })
   axios.get('https://api.jikan.moe/v3/manga/11/characters')
     .then(res => {
       console.log(res)
+      dispatch({ type: DISPLAY_CARDS, payload: res.data })
+    })
+    .catch(err => {
+      console.log(err, 'lol')
     })
 }
 
