@@ -8,7 +8,7 @@ const Characters = (props) => {
   }, []);
   console.log(props.characters);
   return (
-    <div>
+    <div className="container">
       <h2>Characters from Naruto!</h2>
       {props.isLoading ? <h4>Loading characters now...</h4> : null}
       {props.error ? (
@@ -17,11 +17,11 @@ const Characters = (props) => {
         </p>
       ) : null}
       {props.characters.length > 0 ? (
-        <div>
+        <div className="card-container">
           {props.characters.map((character) => (
-            <div>
+            <div className="card">
               <h2 key={character.mal_id}>{character.name}</h2>
-              <img src={character.image_url} alt={'mugshot of character'}/>
+              <img src={character.image_url} alt={"mugshot of character"} />
             </div>
           ))}
         </div>
